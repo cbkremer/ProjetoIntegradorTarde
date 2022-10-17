@@ -41,6 +41,7 @@ public class MenuInicial extends javax.swing.JFrame {
         salvar = new javax.swing.JButton();
         extension = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        escolher_destino = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +83,7 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
-        salvar.setBackground(new java.awt.Color(102, 255, 255));
+        salvar.setBackground(new java.awt.Color(51, 51, 255));
         salvar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         salvar.setForeground(new java.awt.Color(255, 255, 255));
         salvar.setText("Salvar");
@@ -105,6 +106,16 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Extensão:");
 
+        escolher_destino.setBackground(new java.awt.Color(255, 255, 255));
+        escolher_destino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        escolher_destino.setForeground(new java.awt.Color(0, 0, 0));
+        escolher_destino.setText("Escolher");
+        escolher_destino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escolher_destinoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,7 +133,8 @@ public class MenuInicial extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 226, Short.MAX_VALUE)))
+                        .addGap(0, 311, Short.MAX_VALUE))
+                    .addComponent(escolher_destino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,10 +149,12 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(destination_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(escolher_destino)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(extension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                 .addComponent(salvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(executar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,6 +203,11 @@ public class MenuInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_extensionActionPerformed
 
+    private void escolher_destinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolher_destinoActionPerformed
+        // TODO add your handling code here:
+        new FileChooser().setVisible(true);
+    }//GEN-LAST:event_escolher_destinoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +246,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField destination_dir;
+    private javax.swing.JButton escolher_destino;
     private javax.swing.JButton executar;
     private javax.swing.JTextField extension;
     private javax.swing.JLabel jLabel1;
