@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import controller.CreateFile;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -19,10 +24,42 @@ public class MenuInicial extends javax.swing.JFrame {
     /**
      * Creates new form MenuInicial
      */
-    public MenuInicial() {
+    public MenuInicial(){
         initComponents();
+        System.out.println("iniciar");
+        try{
+            readDestinyFiles();
+            readTargetFiles();
+            readExtensionFiles();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
-
+    private void readDestinyFiles() throws FileNotFoundException, IOException {
+        File destiny = new File("destiny.txt");
+        BufferedReader br
+            = new BufferedReader(new FileReader(destiny));
+        String st;
+        while ((st = br.readLine()) != null)
+            destination_dir.setText(st);
+    }
+    private void readTargetFiles() throws FileNotFoundException, IOException {
+        File destiny = new File("target.txt");
+        BufferedReader br
+            = new BufferedReader(new FileReader(destiny));
+        String st;
+        while ((st = br.readLine()) != null)
+            target_dir.setText(st);
+    }
+    private void readExtensionFiles() throws FileNotFoundException, IOException {
+        File destiny = new File("extension.txt");
+        BufferedReader br
+            = new BufferedReader(new FileReader(destiny));
+        String st;
+        while ((st = br.readLine()) != null)
+            extension.setText(st);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +79,8 @@ public class MenuInicial extends javax.swing.JFrame {
         extension = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         escolher_destino = new javax.swing.JButton();
+        delete_button = new javax.swing.JButton();
+        escolher_alvo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +155,26 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
+        delete_button.setBackground(new java.awt.Color(255, 0, 0));
+        delete_button.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        delete_button.setForeground(new java.awt.Color(255, 255, 255));
+        delete_button.setText("Apagar");
+        delete_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_buttonActionPerformed(evt);
+            }
+        });
+
+        escolher_alvo.setBackground(new java.awt.Color(255, 255, 255));
+        escolher_alvo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        escolher_alvo.setForeground(new java.awt.Color(0, 0, 0));
+        escolher_alvo.setText("Escolher");
+        escolher_alvo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escolher_alvoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -124,17 +183,19 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(target_dir)
-                    .addComponent(destination_dir)
                     .addComponent(executar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(salvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(delete_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(destination_dir)
                     .addComponent(extension)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 311, Short.MAX_VALUE))
-                    .addComponent(escolher_destino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(escolher_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(escolher_alvo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 311, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,17 +205,21 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(target_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(escolher_alvo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(destination_dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(escolher_destino)
-                .addGap(9, 9, 9)
+                .addGap(3, 3, 3)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(extension, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(delete_button)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(executar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,9 +269,32 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_extensionActionPerformed
 
     private void escolher_destinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolher_destinoActionPerformed
-        // TODO add your handling code here:
-        new FileChooser().setVisible(true);
+        JFileChooser file = new JFileChooser();
+        file.setMultiSelectionEnabled(true);
+        file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        file.setFileHidingEnabled(false);
+        if (file.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            java.io.File f = file.getSelectedFile();
+            destination_dir.setText(f.getPath());
+        }
     }//GEN-LAST:event_escolher_destinoActionPerformed
+
+    private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
+        extension.setText("");
+        target_dir.setText("");
+        destination_dir.setText("");
+    }//GEN-LAST:event_delete_buttonActionPerformed
+
+    private void escolher_alvoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escolher_alvoActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.setMultiSelectionEnabled(true);
+        file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        file.setFileHidingEnabled(false);
+        if (file.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            java.io.File f = file.getSelectedFile();
+            target_dir.setText(f.getPath());
+        }
+    }//GEN-LAST:event_escolher_alvoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,7 +333,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton delete_button;
     private javax.swing.JTextField destination_dir;
+    private javax.swing.JButton escolher_alvo;
     private javax.swing.JButton escolher_destino;
     private javax.swing.JButton executar;
     private javax.swing.JTextField extension;
