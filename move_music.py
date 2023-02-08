@@ -7,6 +7,9 @@ extension_file = open("extension.txt","r");
 src_path = src_file.read();
 dest_path = destiny_file.read();
 extension = extension_file.read();
+print("source: ",src_path)
+print("destiny: ",dest_path)
+print("extension",extension)
 
 for filename in os.listdir(src_path):
     if filename.endswith(""+extension):
