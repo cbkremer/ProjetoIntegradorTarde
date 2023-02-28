@@ -250,12 +250,18 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_destination_dirActionPerformed
 
     private void executarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executarActionPerformed
-        CreateFile.createAndWriteDestiny(destination_dir.getText());
-        CreateFile.createAndWriteTarget(target_dir.getText());
-        CreateFile.createAndWriteExtension(extension.getText());
+        //CreateFile.createAndWriteDestiny(destination_dir.getText());
+        //CreateFile.createAndWriteTarget(target_dir.getText());
+        //CreateFile.createAndWriteExtension(extension.getText());
         try{
             Runtime rt = Runtime.getRuntime();
-            Process pr = rt.exec("run.bat");
+            //python
+            //Process pr = rt.exec("run.bat");
+            //cmd
+            System.out.println(target_dir.getText());
+            System.out.println(destination_dir.getText());
+            System.out.println(extension.getText());
+            Process pr = rt.exec("teste.bat "+target_dir.getText()+" "+destination_dir.getText()+" "+extension.getText());
         }
         catch(IOException e){
             System.out.println(e);
