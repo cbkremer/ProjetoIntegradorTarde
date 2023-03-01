@@ -1,5 +1,5 @@
 # ProjetoIntegradorTarde
-Integrantes Carlos Kremer, Viktor Dominik e João Vitor Barbosa
+Integrantes: Carlos Kremer, Viktor Dominik e João Vitor Barbosa
 
 Apresentado no dia 01/03/2023
 Link Canva: 
